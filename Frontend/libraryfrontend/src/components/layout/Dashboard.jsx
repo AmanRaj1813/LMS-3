@@ -104,6 +104,12 @@ const Dashboard = () => {
                 >
                   📚View Borrowed Books
                 </button>
+                <button
+                  onClick={() => navigate("/categories")}
+                  className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
+                >
+                  ➕ View Category
+                </button>
               </div>
             </div>
 
@@ -115,6 +121,18 @@ const Dashboard = () => {
                   className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
                 >
                   ➕ Add New Book
+                </button>
+                <button
+                  onClick={() => navigate("/users")}
+                  className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
+                >
+                  ➕ View Members
+                </button>
+                <button
+                  onClick={() => navigate("/fines")}
+                  className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
+                >
+                  $ View Fine
                 </button>
               </div>
             )}

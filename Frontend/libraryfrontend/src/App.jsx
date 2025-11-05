@@ -17,6 +17,7 @@ import Register from "./components/auth/Register";
 import Dashboard from "./components/layout/Dashboard";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
+import Sidebar from "./components/layout/Sidebar";
 
 // Private Route
 import PrivateRoute from "./components/PrivateRoute";
@@ -30,16 +31,19 @@ import BorrowForm from "./components/borrowings/BorrowForm";
 import BorrowList from "./components/borrowings/BorrowList";
 // Placeholder Components
 
-const CategoryList = () => (
-  <div className="p-8">Category List - Coming Soon</div>
-);
-const UserList = () => <div className="p-8">User List - Coming Soon</div>;
+import CategoryList from "./components/categories/CategoryList";
+import CategoryForm from "./components/categories/CategoryForm";
+import BookSearch from "./components/books/BookSearch";
+import UserList from "./components/users/UserList";
+import BookDetail from "./components/books/BookDetail";
+import FinePayment from "./components/layout/pages/FinePayment";
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
         <Header />
+        <Sidebar />
         <Routes>
           {/* Public Routes */}
           <Route path="/login" element={<Login />} />
@@ -60,6 +64,23 @@ function App() {
             element={
               <PrivateRoute>
                 <BookList />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/books/search"
+            element={
+              <PrivateRoute>
+                <BookSearch />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/books/:id"
+            element={
+              <PrivateRoute>
+                <BookDetail />
               </PrivateRoute>
             }
           />
@@ -91,11 +112,28 @@ function App() {
             }
           />
 
+          {/* ✅ Categories */}
           <Route
             path="/categories"
             element={
               <PrivateRoute>
                 <CategoryList />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/categories/new"
+            element={
+              <PrivateRoute librarianAllowed>
+                <CategoryForm />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/fines"
+            element={
+              <PrivateRoute librarianAllowed>
+                <FinePayment />
               </PrivateRoute>
             }
           />
